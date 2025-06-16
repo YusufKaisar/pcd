@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Image Enhancement Studio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Header Section -->
+    <header class="header">
+      <div class="header-content">
+        <i class="fas fa-magic header-icon"></i>
+        <h1 class="header-title">Image Enhancement Studio</h1>
+        <p class="header-subtitle">Restori Foto Lama anda dengan Proses Manual</p>
+      </div>
+    </header>
+
+        <!-- Navigation -->
+    <nav class="navigation">
+      <a href="{{ url_for('simulasi') }}" class="nav-link">
+        Simulasi Pengolahan Citra Digital
+      </a>
+    </nav>
+
+    <!-- Upload Section -->
+    <section class="upload-section">
+      <div class="upload-card">
+        <div class="upload-icon">
+          <i class="fas fa-cloud-upload-alt"></i>
+        </div>
+        <h2>Upload Foto Anda</h2>
+        <p>Pilih foto</p>
+        
+        <form method="post" enctype="multipart/form-data" class="upload-form">
+          <div class="file-input-wrapper">
+            <input type="file" name="image" id="image-input" required accept="image/*">
+            <label for="image-input" class="file-input-label">
+              <i class="fas fa-plus"></i>
+              Choose Image
+            </label>
+          </div>
+          
+          <button type="submit" class="process-btn">
+            <i class="fas fa-cog"></i>
+            Process Image
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section">
+      <div class="results-header">
+        <h2>Enhancement Results</h2>
+        <div class="divider"></div>
+      </div>
+      
+      <div class="image-comparison">
+        <div class="image-card before-card">
+          <div class="image-header">
+            <h3>Original Image</h3>
+          </div>
+          <div class="image-wrapper">
+            <img src="{{ url_for('static', filename='before.png') }}" alt="Original Image" class="comparison-image">
+            <div class="image-overlay">
+              <span class="image-label">BEFORE</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comparison-arrow">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+
+        <div class="image-card after-card">
+          <div class="image-header">
+            <i class="fas fa-sparkles"></i>
+            <h3>Enhanced Image</h3>
+          </div>
+          <div class="image-wrapper">
+            <img src="{{ url_for('static', filename='hasil.png') }}" alt="Enhanced Image" class="comparison-image">
+            <div class="image-overlay">
+              <span class="image-label enhanced">AFTER</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // File input preview
+    document.getElementById('image-input').addEventListener('change', function(e) {
+      const fileName = e.target.files[0]?.name;
+      if (fileName) {
+        const label = document.querySelector('.file-input-label');
+        label.innerHTML = `<i class="fas fa-check"></i> ${fileName}`;
+        label.classList.add('file-selected');
+      }
+    });
+
+    // Add loading state to process button
+    document.querySelector('.upload-form').addEventListener('submit', function() {
+      const btn = document.querySelector('.process-btn');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+      btn.disabled = true;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Flask
+Pillow
+scikit-image
+numpy
+scipy
