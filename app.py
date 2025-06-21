@@ -5,12 +5,6 @@ from skimage.restoration import richardson_lucy
 from scipy.signal import convolve2d
 import os
 
-from flask import Flask, render_template, request, redirect, url_for
-from PIL import Image
-import numpy as np
-from skimage.restoration import richardson_lucy
-import os
-
 # app = Flask(__name__)
 # UPLOAD_FOLDER = 'static'
 # app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -86,11 +80,6 @@ import os
 #         return render_template('index.html', before_image='before.png', after_image='hasil.png')
 
 #     return render_template('index.html')
-
-from flask import Flask, render_template, request
-from PIL import Image
-import numpy as np
-import os
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static'
