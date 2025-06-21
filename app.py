@@ -9,12 +9,12 @@ import os
 # UPLOAD_FOLDER = 'static'
 # app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# # PSF kernel
-# def psf_kernel(size=5, sigma=2.0):
-#     ax = np.linspace(-(size // 2), size // 2, size)
-#     xx, yy = np.meshgrid(ax, ax)
-#     kernel = np.exp(-(xx**2 + yy**2) / (2.0 * sigma**2))
-#     return kernel / np.sum(kernel)
+# PSF kernel
+def psf_kernel(size=5, sigma=2.0):
+    ax = np.linspace(-(size // 2), size // 2, size)
+    xx, yy = np.meshgrid(ax, ax)
+    kernel = np.exp(-(xx**2 + yy**2) / (2.0 * sigma**2))
+    return kernel / np.sum(kernel)
 
 # # Manual 2D convolution
 # def manual_convolve2d(image, kernel):
